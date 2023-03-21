@@ -38,6 +38,7 @@
 #include "jni.h"
 #include "jni_util.h"
 #include "jvm.h"
+#include <stdio.h>
 
 #include "java_lang_Runtime.h"
 
@@ -64,6 +65,18 @@ Java_java_lang_Runtime_gc(JNIEnv *env, jobject this)
 {
     JVM_GC();
 }
+
+JNIEXPORT void JNICALL
+Java_java_lang_Runtime_free(JNIEnv *env, jobject this)
+{
+    // pass in object
+    printf("Caught !\n");
+}
+// JNIEXPORT void JNICALL
+// Java_java_lang_Runtime_testPrint()
+// {
+//     printf("HELLO WORLD!@!@!@!");
+// }
 
 JNIEXPORT jint JNICALL
 Java_java_lang_Runtime_availableProcessors(JNIEnv *env, jobject this)

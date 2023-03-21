@@ -30,7 +30,6 @@
 
 #include "jni.h"
 #include "jvm_md.h"
-
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -126,6 +125,9 @@ JVM_Halt(jint code);
 
 JNIEXPORT void JNICALL
 JVM_GC(void);
+
+// JNIEXPORT void JNICALL
+// TEST_PRINT(void);
 
 /* Returns the number of real-time milliseconds that have elapsed since the
  * least-recently-inspected heap object was last inspected by the garbage

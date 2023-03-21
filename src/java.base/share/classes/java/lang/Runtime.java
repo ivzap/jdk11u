@@ -58,7 +58,7 @@ public class Runtime {
     private static final Runtime currentRuntime = new Runtime();
 
     private static Version version;
-
+    
     /**
      * Returns the runtime object associated with the current Java application.
      * Most of the methods of class {@code Runtime} are instance
@@ -659,6 +659,23 @@ public class Runtime {
      */
     public native void gc();
 
+    /**
+     * Runs the garbage collector.
+     * Calling this method suggests that the Java virtual machine expend
+     * effort toward recycling unused objects in order to make the memory
+     * they currently occupy available for quick reuse. When control
+     * returns from the method call, the virtual machine has made
+     * its best effort to recycle all discarded objects.
+     * <p>
+     * The name {@code gc} stands for "garbage
+     * collector". The virtual machine performs this recycling
+     * process automatically as needed, in a separate thread, even if the
+     * {@code gc} method is not invoked explicitly.
+     * <p>
+     * means of invoking this method.
+     */
+    public native void free();
+    
     /**
      * Runs the finalization methods of any objects pending finalization.
      * Calling this method suggests that the Java virtual machine expend

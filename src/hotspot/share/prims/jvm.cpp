@@ -85,6 +85,7 @@
 #include "utilities/histogram.hpp"
 #include "utilities/macros.hpp"
 #include "utilities/utf8.hpp"
+
 #if INCLUDE_CDS
 #include "classfile/systemDictionaryShared.hpp"
 #endif
@@ -460,6 +461,11 @@ JVM_ENTRY_NO_ENV(void, JVM_GC(void))
     Universe::heap()->collect(GCCause::_java_lang_system_gc);
   }
 JVM_END
+
+// JVM_ENTRY_NO_ENV(void, TEST_PRINT(void))
+//   JVMWrapper("TEST_PRINT");
+//   std::cout<<"This is a jvm.cpp print"<<std::endl;
+// JVM_END
 
 
 JVM_LEAF(jlong, JVM_MaxObjectInspectionAge(void))
