@@ -676,7 +676,7 @@ public class Runtime {
      * means of invoking this method.
      * @param obj passed object
      */
-    public native void free(String[] obj);
+    public native void free(Object obj);
 
     /**
      * Runs the finalization methods of any objects pending finalization.

@@ -1792,7 +1792,7 @@ public final class System {
      * @param      obj   passed object.
      * @see     java.lang.Runtime#gc()
      */
-    public static void free(String[] obj) {
+    public static void free(Object obj) {
         Runtime.getRuntime().free(obj);
     }
 
