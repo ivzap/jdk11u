@@ -1789,12 +1789,13 @@ public final class System {
      * <blockquote><pre>
      * Runtime.getRuntime().gc()
      * </pre></blockquote>
-     *
+     * @param      obj   passed object.
      * @see     java.lang.Runtime#gc()
      */
-    public static void free() {
-        Runtime.getRuntime().free();
+    public static void free(String[] obj) {
+        Runtime.getRuntime().free(obj);
     }
+
     /**
      * Runs the finalization methods of any objects pending finalization.
      *

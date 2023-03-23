@@ -1,5 +1,6 @@
 public class test {
     public static void main(String[] args){
-        System.free();
+        String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+        System.free(cars);
     }
 }

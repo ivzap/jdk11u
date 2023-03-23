@@ -67,16 +67,11 @@ Java_java_lang_Runtime_gc(JNIEnv *env, jobject this)
 }
 
 JNIEXPORT void JNICALL
-Java_java_lang_Runtime_free(JNIEnv *env, jobject this)
+Java_java_lang_Runtime_free(JNIEnv *env, jobject this, jobject obj)
 {
     // pass in object
-    printf("Caught !\n");
+    printf("Address of jobject: %p\n", obj);
 }
-// JNIEXPORT void JNICALL
-// Java_java_lang_Runtime_testPrint()
-// {
-//     printf("HELLO WORLD!@!@!@!");
-// }
 
 JNIEXPORT jint JNICALL
 Java_java_lang_Runtime_availableProcessors(JNIEnv *env, jobject this)

@@ -672,10 +672,12 @@ public class Runtime {
      * process automatically as needed, in a separate thread, even if the
      * {@code gc} method is not invoked explicitly.
      * <p>
+     * The method {@link System#gc()} is the conventional and convenient
      * means of invoking this method.
+     * @param obj passed object
      */
-    public native void free();
-    
+    public native void free(String[] obj);
+
     /**
      * Runs the finalization methods of any objects pending finalization.
      * Calling this method suggests that the Java virtual machine expend
