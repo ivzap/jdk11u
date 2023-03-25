@@ -70,7 +70,11 @@ JNIEXPORT void JNICALL
 Java_java_lang_Runtime_free(JNIEnv *env, jobject this, jobject obj)
 {
     // pass in object
-    printf("Address of jobject: %p\n", obj);
+    FREE(obj);
+    // cast obj to oopDasc ptr then print the size.
+    // implement jvm.h and jvm.cpp for free. Then add a function that
+    // Universe->print_size_of_object.
+    //FREE(obj)
 }
 
 JNIEXPORT jint JNICALL

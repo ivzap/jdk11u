@@ -64,6 +64,7 @@ JVM_FindPrimitiveClass
 JVM_FindSignal
 JVM_FreeMemory
 JVM_GC
+FREE
 JVM_GetAllThreads
 JVM_GetAndClearReferencePendingList
 JVM_GetArrayElement
