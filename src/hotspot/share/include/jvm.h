@@ -29,6 +29,9 @@
 #include <sys/stat.h>
 #include "jni.h"
 #include "jvm_md.h"
+#include <jvmti.h>
+#include <stdio.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -126,7 +129,7 @@ JNIEXPORT void JNICALL
 JVM_GC(void);
 
 JNIEXPORT void JNICALL
-FREE(jobject obj);
+MARK(jobject obj);
 
 /* Returns the number of real-time milliseconds that have elapsed since the
  * least-recently-inspected heap object was last inspected by the garbage

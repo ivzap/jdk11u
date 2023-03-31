@@ -67,10 +67,10 @@ Java_java_lang_Runtime_gc(JNIEnv *env, jobject this)
 }
 
 JNIEXPORT void JNICALL
-Java_java_lang_Runtime_free(JNIEnv *env, jobject this, jobject obj)
+Java_java_lang_Runtime_mark(JNIEnv *env, jobject this, jobject obj)
 {
     // pass in object
-    FREE(obj);
+    MARK(obj);
     // cast obj to oopDasc ptr then print the size.
     // implement jvm.h and jvm.cpp for free. Then add a function that
     // Universe->print_size_of_object.

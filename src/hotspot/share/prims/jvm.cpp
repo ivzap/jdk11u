@@ -462,14 +462,9 @@ JVM_ENTRY_NO_ENV(void, JVM_GC(void))
   }
 JVM_END
 
-JVM_ENTRY_NO_ENV(void, FREE(jobject obj))
+JVM_ENTRY_NO_ENV(void, MARK(jobject obj))
   JVMWrapper("FREE");
-// best if you can cast jobject to a void ptr or "generic" ptr
-// cast back to oop ptr in c++ file
-  // if (!DisableExplicitGC) {
-  //   Universe::heap()->size();
-  // }
-  std::cout<<sizeof(obj)<<std::endl;
+  Universe::MARK(obj);
 JVM_END
 
 
