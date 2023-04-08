@@ -1,6 +1,18 @@
 public class test {
     public static void main(String[] args){
-        String[] cars = {"Volvo", "BMW", "Ford", "Mazda","Volvo"};
-        System.mark(cars);
+        FreshJuice mine = new FreshJuice();
+        System.mark(mine);
     }
+}
+class FreshJuice {
+    // enum FreshJuiceSize{ SMALL, MEDIUM, LARGE }
+    // FreshJuiceSize size;
+    // int a;
+    // int b;
+    // int c;
+    // int d;
+    // int e;
+    // long a;
+    // long b;
+    // long c;
 }

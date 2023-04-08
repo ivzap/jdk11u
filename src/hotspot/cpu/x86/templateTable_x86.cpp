@@ -4098,14 +4098,33 @@ void TemplateTable::_new() {
     // initialize object header only.
     __ bind(initialize_header);
     if (UseBiasedLocking) {
+      // movptr(rbx,Addss(calc offset)))
       __ pop(rcx);   // get saved klass back in the register.
       __ movptr(rbx, Address(rcx, Klass::prototype_header_offset()));
       __ movptr(Address(rax, oopDesc::mark_offset_in_bytes ()), rbx);
+      // Initialize RDD to 0
+      __ movptr(Address(rax, oopDesc::rdd_offset_in_bytes ()), 0);
+
     } else {
       __ movptr(Address(rax, oopDesc::mark_offset_in_bytes ()),
                 (intptr_t)markOopDesc::prototype()); // header
       __ pop(rcx);   // get saved klass back in the register.
+      // Initialize RDD to 0
+      __ movptr(Address(rax, oopDesc::rdd_offset_in_bytes ()), 0);
     }
+    /*
+      Need to somehow calculate the offset of RDD field to get position of RDD field in object memory layout
+      
+      Sudo Code:
+        // Assume that rcx contains the address of the oopDesc object
+        movq(rax, Address(rcx, oopDesc::header_size()));
+        // oopDesc::header_size() is the offset of the first field of oopDesc after the object header
+
+        // Initialize the RDD field with zero
+        movq(Address(rax, oopDesc::rdd_offset()), 0);
+        // oopDesc::rdd_offset() is the offset of the RDD field from the start of the oopDesc object
+
+    */
 #ifdef _LP64
     __ xorl(rsi, rsi); // use zero reg to clear memory (shorter code)
     __ store_klass_gap(rax, rsi);  // zero klass gap for compressed oops

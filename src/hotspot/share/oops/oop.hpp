@@ -31,6 +31,7 @@
 #include "oops/metadata.hpp"
 #include "runtime/atomic.hpp"
 #include "utilities/macros.hpp"
+#include <iostream>
 
 // oopDesc is the top baseclass for objects classes. The {name}Desc classes describe
 // the format of Java objects so the fields can be accessed from C++.
@@ -56,13 +57,18 @@ class oopDesc {
   friend class VMStructs;
   friend class JVMCIVMStructs;
  private:
+  size_t RDD;
   volatile markOop _mark;
   union _metadata {
     Klass*      _klass;
     narrowKlass _compressed_klass;
   } _metadata;
-
- public:
+  // add another field 
+ public: 
+  // inline void setRDD(int status){
+  //   std::cout << "RDD set to " << status << std::endl << std::flush;
+  //   RDD = status;
+  // }
   inline markOop  mark()          const;
   inline markOop  mark_raw()      const;
   inline markOop* mark_addr_raw() const;
@@ -323,6 +329,7 @@ class oopDesc {
   static bool has_klass_gap();
 
   // for code generation
+  static int rdd_offset_in_bytes()       { return offset_of(oopDesc, RDD);}
   static int mark_offset_in_bytes()      { return offset_of(oopDesc, _mark); }
   static int klass_offset_in_bytes()     { return offset_of(oopDesc, _metadata._klass); }
   static int klass_gap_offset_in_bytes() {
