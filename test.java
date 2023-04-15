@@ -1,7 +1,8 @@
 public class test {
     public static void main(String[] args){
         FreshJuice mine = new FreshJuice();
-        System.mark(mine);
+        Runtime.getRuntime().mark(mine);
+        
     }
 }
 class FreshJuice {

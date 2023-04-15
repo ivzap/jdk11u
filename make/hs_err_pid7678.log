@@ -1,0 +1,431 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f1d38db9b41, pid=7678, tid=7710
+#
+# JRE version:  (11.0.19) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.19-internal+0-adhoc.ivzap.jdk11u, mixed mode, tiered, compressed oops, serial gc, linux-amd64)
+# Problematic frame:
+# C  [libc.so.6+0x18bb41]
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport -p%p -s%s -c%c -d%d -P%P -u%u -g%g -- %E" (or dumping to /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/make/core.7678)
+#
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dapplication.home=/home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk -Xms8m -XX:+UseSerialGC -Xms32M -Xmx512M -XX:TieredStopAtLevel=1 -Djdk.module.main=jdk.jlink jdk.jlink/jdk.tools.jmod.Main create --module-version 11.0.19-internal --target-platform linux-amd64 --module-path /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/images/jmods --cmds /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/support/modules_cmds/java.scripting --class-path /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/modules/java.scripting --legal-notices /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/support/modules_legal/common --exclude **{_the.*,_*.marker,*.diz,*.debuginfo,*.dSYM/**,*.dSYM} /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/support/jmods/java.scripting.jmod
+
+Host: 12th Gen Intel(R) Core(TM) i7-12700, 20 cores, 15G, Ubuntu 20.04.5 LTS
+Time: Thu Apr 13 22:10:47 2023 CDT elapsed time: 0.013817 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f1d30027000):  JavaThread "Unknown thread" [_thread_in_vm, id=7710, stack(0x00007f1d37684000,0x00007f1d37785000)]
+
+Stack: [0x00007f1d37684000,0x00007f1d37785000],  sp=0x00007f1d377838b8,  free space=1022k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libc.so.6+0x18bb41]
+V  [libjvm.so+0xb7d66b]  MemAllocator::allocate() const+0x7b
+V  [libjvm.so+0x629128]  CollectedHeap::array_allocate(Klass*, int, int, bool, Thread*)+0x48
+V  [libjvm.so+0xde029a]  TypeArrayKlass::allocate_common(int, bool, Thread*)+0x8a
+V  [libjvm.so+0xd85478]  SystemDictionary::initialize(Thread*)+0x108
+V  [libjvm.so+0xde1b78]  Universe::genesis(Thread*)+0x3f8
+V  [libjvm.so+0xde2681]  universe2_init()+0x31
+V  [libjvm.so+0x87b9dd]  init_globals()+0xad
+V  [libjvm.so+0xdbafb2]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x4b2
+V  [libjvm.so+0x9314f5]  JNI_CreateJavaVM+0x55
+C  [libjli.so+0x4f6f]  JavaMain+0x9f
+C  [libjli.so+0x9ead]  ThreadJavaMain+0xd
+
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 2 (SEGV_ACCERR), si_addr: 0x00000000e0aa0000
+
+Registers:
+RAX=0x0000000000000000, RBX=0x00007f1d37783970, RCX=0xffffffffff560010, RDX=0x00000000e0000018
+RSP=0x00007f1d377838b8, RBP=0x00007f1d377838e0, RSI=0x0000000000000000, RDI=0x00000000e0aa0000
+R8 =0x00007f1d3003b4e0, R9 =0x000000000002b860, R10=0xffffffffffffffff, R11=0x0000000000000000
+R12=0x00000000e0000000, R13=0x00007f1d38ba071c, R14=0x0000000000000001, R15=0x00007f1d30025e30
+RIP=0x00007f1d38db9b41, EFLAGS=0x0000000000010282, CSGSFS=0x002b000000000033, ERR=0x0000000000000006
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007f1d377838b8)
+0x00007f1d377838b8:   00007f1d38450e15 00007f1d3004e4c0
+0x00007f1d377838c8:   00007f1d37783970 00007f1d37783900
+0x00007f1d377838d8:   0000000000000000 00007f1d37783960
+0x00007f1d377838e8:   00007f1d3845166b 0000000000000000 
+
+Instructions: (pc=0x00007f1d38db9b41)
+0x00007f1d38db9a41:   ff ff 0f 18 89 80 fe ff ff 0f 18 89 40 fe ff ff
+0x00007f1d38db9a51:   c5 fe 6f 01 c5 fe 6f 49 e0 c5 fe 6f 51 c0 c5 fe
+0x00007f1d38db9a61:   6f 59 a0 48 81 e9 80 00 00 00 48 81 ea 80 00 00
+0x00007f1d38db9a71:   00 c4 c1 7d e7 01 c4 c1 7d e7 49 e0 c4 c1 7d e7
+0x00007f1d38db9a81:   51 c0 c4 c1 7d e7 59 a0 49 81 e9 80 00 00 00 48
+0x00007f1d38db9a91:   81 fa 80 00 00 00 77 9c 0f ae f8 c5 fe 7f 27 c5
+0x00007f1d38db9aa1:   fe 7f 6f 20 c5 fe 7f 77 40 c5 fe 7f 7f 60 c4 41
+0x00007f1d38db9ab1:   7e 7f 03 c5 f8 77 c3 0f 1f 84 00 00 00 00 00 f3
+0x00007f1d38db9ac1:   0f 1e fa 48 39 d1 0f 82 73 28 fa ff 0f 1f 00 f3
+0x00007f1d38db9ad1:   0f 1e fa 48 c1 e2 02 c5 f9 6e c6 48 89 f8 c4 e2
+0x00007f1d38db9ae1:   7d 58 c0 eb 2a 66 2e 0f 1f 84 00 00 00 00 00 f3
+0x00007f1d38db9af1:   0f 1e fa 48 39 d1 0f 82 43 28 fa ff 0f 1f 00 f3
+0x00007f1d38db9b01:   0f 1e fa c5 f9 6e c6 48 89 f8 c4 e2 7d 78 c0 48
+0x00007f1d38db9b11:   83 fa 20 0f 82 04 01 00 00 48 83 fa 40 77 77 c5
+0x00007f1d38db9b21:   fe 7f 44 17 e0 c5 fe 7f 07 c5 f8 77 c3 66 90 f3
+0x00007f1d38db9b31:   0f 1e fa c5 f8 77 48 89 d1 40 0f b6 c6 48 89 fa
+0x00007f1d38db9b41:   f3 aa 48 89 d0 c3 66 0f 1f 84 00 00 00 00 00 f3
+0x00007f1d38db9b51:   0f 1e fa 48 39 d1 0f 82 e3 27 fa ff 0f 1f 00 f3
+0x00007f1d38db9b61:   0f 1e fa c5 f9 6e c6 48 89 f8 c4 e2 7d 78 c0 48
+0x00007f1d38db9b71:   83 fa 20 0f 82 a4 00 00 00 48 83 fa 40 77 0e c5
+0x00007f1d38db9b81:   fe 7f 44 17 e0 c5 fe 7f 07 c5 f8 77 c3 48 81 fa
+0x00007f1d38db9b91:   00 08 00 00 77 9d 48 81 fa 80 00 00 00 77 19 c5
+0x00007f1d38db9ba1:   fe 7f 07 c5 fe 7f 47 20 c5 fe 7f 44 17 e0 c5 fe
+0x00007f1d38db9bb1:   7f 44 17 c0 c5 f8 77 c3 48 8d 8f 80 00 00 00 c5
+0x00007f1d38db9bc1:   fe 7f 07 48 83 e1 80 c5 fe 7f 44 17 e0 c5 fe 7f
+0x00007f1d38db9bd1:   47 20 c5 fe 7f 44 17 c0 c5 fe 7f 47 40 c5 fe 7f
+0x00007f1d38db9be1:   44 17 a0 c5 fe 7f 47 60 c5 fe 7f 44 17 80 48 01
+0x00007f1d38db9bf1:   fa 48 83 e2 80 48 39 d1 74 ba c5 fd 7f 01 c5 fd
+0x00007f1d38db9c01:   7f 41 20 c5 fd 7f 41 40 c5 fd 7f 41 60 48 81 c1
+0x00007f1d38db9c11:   80 00 00 00 48 39 ca 75 e1 c5 f8 77 c3 80 fa 10
+0x00007f1d38db9c21:   73 1c c4 e1 f9 7e c1 80 fa 08 73 20 80 fa 04 73
+0x00007f1d38db9c31:   27 80 fa 01 77 2c 72 02 88 0f c5 f8 77 c3 c5 fa 
+
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x000055bc8c430a50, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x00007f1d30027000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=7710, stack(0x00007f1d37684000,0x00007f1d37785000)]
+
+Threads with active compile tasks:
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x00000000e0000000, size: 512 MB, Compressed Oops mode: 32-bit
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 3
+Compressed class space size: 1073741824 Address: 0x0000000100000000
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (2 events):
+Event: 0.003 Protecting memory [0x00007f1d37684000,0x00007f1d37688000] with protection modes 0
+Event: 0.004 Loaded shared library /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libzip.so
+
+
+Dynamic libraries:
+e0000000-e0aa0000 rw-p 00000000 00:00 0 
+e0aa0000-eaaa0000 ---p 00000000 00:00 0 
+eaaa0000-ec000000 rw-p 00000000 00:00 0 
+ec000000-100000000 ---p 00000000 00:00 0 
+100000000-100060000 rw-p 00000000 00:00 0 
+100060000-140000000 ---p 00000000 00:00 0 
+55bc8b204000-55bc8b205000 r--p 00000000 fd:02 16256346                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/bin/jmod
+55bc8b205000-55bc8b206000 r-xp 00001000 fd:02 16256346                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/bin/jmod
+55bc8b206000-55bc8b207000 r--p 00002000 fd:02 16256346                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/bin/jmod
+55bc8b207000-55bc8b208000 r--p 00002000 fd:02 16256346                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/bin/jmod
+55bc8b208000-55bc8b209000 rw-p 00003000 fd:02 16256346                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/bin/jmod
+55bc8c426000-55bc8c447000 rw-p 00000000 00:00 0                          [heap]
+7f1d21000000-7f1d21270000 rwxp 00000000 00:00 0 
+7f1d21270000-7f1d21b9a000 ---p 00000000 00:00 0 
+7f1d21b9a000-7f1d21e0a000 rwxp 00000000 00:00 0 
+7f1d21e0a000-7f1d30000000 ---p 00000000 00:00 0 
+7f1d30000000-7f1d30072000 rw-p 00000000 00:00 0 
+7f1d30072000-7f1d34000000 ---p 00000000 00:00 0 
+7f1d36521000-7f1d36e13000 rw-p 00000000 00:00 0 
+7f1d36e13000-7f1d37213000 ---p 00000000 00:00 0 
+7f1d37213000-7f1d37260000 rw-p 00000000 00:00 0 
+7f1d37260000-7f1d37300000 ---p 00000000 00:00 0 
+7f1d37300000-7f1d37306000 rw-p 00000000 00:00 0 
+7f1d37306000-7f1d37355000 ---p 00000000 00:00 0 
+7f1d37355000-7f1d37360000 rw-p 00000000 00:00 0 
+7f1d37360000-7f1d37400000 ---p 00000000 00:00 0 
+7f1d37400000-7f1d37406000 rw-p 00000000 00:00 0 
+7f1d37406000-7f1d375ca000 ---p 00000000 00:00 0 
+7f1d375ca000-7f1d375cf000 rw-p 00000000 00:00 0 
+7f1d375cf000-7f1d375e2000 ---p 00000000 00:00 0 
+7f1d375e2000-7f1d375e4000 r--p 00000000 fd:02 15207359                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libzip.so
+7f1d375e4000-7f1d375e9000 r-xp 00002000 fd:02 15207359                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libzip.so
+7f1d375e9000-7f1d375eb000 r--p 00007000 fd:02 15207359                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libzip.so
+7f1d375eb000-7f1d375ec000 r--p 00008000 fd:02 15207359                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libzip.so
+7f1d375ec000-7f1d375ed000 rw-p 00009000 fd:02 15207359                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libzip.so
+7f1d375ed000-7f1d375f5000 rw-s 00000000 fd:01 402931                     /tmp/hsperfdata_ivzap/7678
+7f1d375f5000-7f1d3762a000 r--s 00000000 fd:01 19088                      /var/cache/nscd/passwd
+7f1d3762a000-7f1d3762e000 r--p 00000000 fd:02 15207361                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libjimage.so
+7f1d3762e000-7f1d37642000 r-xp 00004000 fd:02 15207361                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libjimage.so
+7f1d37642000-7f1d37648000 r--p 00018000 fd:02 15207361                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libjimage.so
+7f1d37648000-7f1d3764a000 r--p 0001d000 fd:02 15207361                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libjimage.so
+7f1d3764a000-7f1d3764b000 rw-p 0001f000 fd:02 15207361                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libjimage.so
+7f1d3764b000-7f1d37659000 r--p 00000000 fd:02 15207347                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libjava.so
+7f1d37659000-7f1d37670000 r-xp 0000e000 fd:02 15207347                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libjava.so
+7f1d37670000-7f1d37677000 r--p 00025000 fd:02 15207347                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libjava.so
+7f1d37677000-7f1d37678000 r--p 0002b000 fd:02 15207347                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libjava.so
+7f1d37678000-7f1d37679000 rw-p 0002c000 fd:02 15207347                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libjava.so
+7f1d37679000-7f1d3767a000 rw-p 00000000 00:00 0 
+7f1d3767a000-7f1d3767c000 r--p 00000000 fd:01 1841064                    /usr/lib/x86_64-linux-gnu/librt-2.31.so
+7f1d3767c000-7f1d37680000 r-xp 00002000 fd:01 1841064                    /usr/lib/x86_64-linux-gnu/librt-2.31.so
+7f1d37680000-7f1d37682000 r--p 00006000 fd:01 1841064                    /usr/lib/x86_64-linux-gnu/librt-2.31.so
+7f1d37682000-7f1d37683000 r--p 00007000 fd:01 1841064                    /usr/lib/x86_64-linux-gnu/librt-2.31.so
+7f1d37683000-7f1d37684000 rw-p 00008000 fd:01 1841064                    /usr/lib/x86_64-linux-gnu/librt-2.31.so
+7f1d37684000-7f1d37688000 ---p 00000000 00:00 0 
+7f1d37688000-7f1d37785000 rw-p 00000000 00:00 0 
+7f1d37785000-7f1d37792000 r--p 00000000 fd:01 1841051                    /usr/lib/x86_64-linux-gnu/libm-2.31.so
+7f1d37792000-7f1d37839000 r-xp 0000d000 fd:01 1841051                    /usr/lib/x86_64-linux-gnu/libm-2.31.so
+7f1d37839000-7f1d378d2000 r--p 000b4000 fd:01 1841051                    /usr/lib/x86_64-linux-gnu/libm-2.31.so
+7f1d378d2000-7f1d378d3000 r--p 0014c000 fd:01 1841051                    /usr/lib/x86_64-linux-gnu/libm-2.31.so
+7f1d378d3000-7f1d378d4000 rw-p 0014d000 fd:01 1841051                    /usr/lib/x86_64-linux-gnu/libm-2.31.so
+7f1d378d4000-7f1d37b5f000 r--p 00000000 fd:02 15206656                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/server/libjvm.so
+7f1d37b5f000-7f1d38811000 r-xp 0028b000 fd:02 15206656                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/server/libjvm.so
+7f1d38811000-7f1d38a8a000 r--p 00f3d000 fd:02 15206656                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/server/libjvm.so
+7f1d38a8a000-7f1d38a8b000 ---p 011b6000 fd:02 15206656                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/server/libjvm.so
+7f1d38a8b000-7f1d38b53000 r--p 011b6000 fd:02 15206656                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/server/libjvm.so
+7f1d38b53000-7f1d38b8d000 rw-p 0127e000 fd:02 15206656                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/server/libjvm.so
+7f1d38b8d000-7f1d38be9000 rw-p 00000000 00:00 0 
+7f1d38be9000-7f1d38bef000 r--p 00000000 fd:01 1841062                    /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+7f1d38bef000-7f1d38c00000 r-xp 00006000 fd:01 1841062                    /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+7f1d38c00000-7f1d38c06000 r--p 00017000 fd:01 1841062                    /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+7f1d38c06000-7f1d38c07000 r--p 0001c000 fd:01 1841062                    /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+7f1d38c07000-7f1d38c08000 rw-p 0001d000 fd:01 1841062                    /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+7f1d38c08000-7f1d38c0c000 rw-p 00000000 00:00 0 
+7f1d38c0c000-7f1d38c0d000 r--p 00000000 fd:01 1841050                    /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+7f1d38c0d000-7f1d38c0f000 r-xp 00001000 fd:01 1841050                    /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+7f1d38c0f000-7f1d38c10000 r--p 00003000 fd:01 1841050                    /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+7f1d38c10000-7f1d38c11000 r--p 00003000 fd:01 1841050                    /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+7f1d38c11000-7f1d38c12000 rw-p 00004000 fd:01 1841050                    /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+7f1d38c12000-7f1d38c14000 r--p 00000000 fd:01 1836598                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f1d38c14000-7f1d38c25000 r-xp 00002000 fd:01 1836598                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f1d38c25000-7f1d38c2b000 r--p 00013000 fd:01 1836598                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f1d38c2b000-7f1d38c2c000 ---p 00019000 fd:01 1836598                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f1d38c2c000-7f1d38c2d000 r--p 00019000 fd:01 1836598                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f1d38c2d000-7f1d38c2e000 rw-p 0001a000 fd:01 1836598                    /usr/lib/x86_64-linux-gnu/libz.so.1.2.11
+7f1d38c2e000-7f1d38c50000 r--p 00000000 fd:01 1841049                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
+7f1d38c50000-7f1d38dc8000 r-xp 00022000 fd:01 1841049                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
+7f1d38dc8000-7f1d38e16000 r--p 0019a000 fd:01 1841049                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
+7f1d38e16000-7f1d38e1a000 r--p 001e7000 fd:01 1841049                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
+7f1d38e1a000-7f1d38e1c000 rw-p 001eb000 fd:01 1841049                    /usr/lib/x86_64-linux-gnu/libc-2.31.so
+7f1d38e1c000-7f1d38e20000 rw-p 00000000 00:00 0 
+7f1d38e20000-7f1d38e21000 ---p 00000000 00:00 0 
+7f1d38e21000-7f1d38e22000 r--p 00000000 00:00 0 
+7f1d38e22000-7f1d38e27000 r--p 00000000 fd:02 15207341                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libverify.so
+7f1d38e27000-7f1d38e2e000 r-xp 00005000 fd:02 15207341                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libverify.so
+7f1d38e2e000-7f1d38e30000 r--p 0000c000 fd:02 15207341                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libverify.so
+7f1d38e30000-7f1d38e31000 ---p 0000e000 fd:02 15207341                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libverify.so
+7f1d38e31000-7f1d38e33000 r--p 0000e000 fd:02 15207341                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libverify.so
+7f1d38e33000-7f1d38e34000 rw-p 00010000 fd:02 15207341                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/libverify.so
+7f1d38e34000-7f1d38e37000 r--p 00000000 fd:02 15340058                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/jli/libjli.so
+7f1d38e37000-7f1d38e41000 r-xp 00003000 fd:02 15340058                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/jli/libjli.so
+7f1d38e41000-7f1d38e44000 r--p 0000d000 fd:02 15340058                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/jli/libjli.so
+7f1d38e44000-7f1d38e45000 ---p 00010000 fd:02 15340058                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/jli/libjli.so
+7f1d38e45000-7f1d38e46000 r--p 00010000 fd:02 15340058                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/jli/libjli.so
+7f1d38e46000-7f1d38e47000 rw-p 00011000 fd:02 15340058                   /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/lib/jli/libjli.so
+7f1d38e47000-7f1d38e49000 rw-p 00000000 00:00 0 
+7f1d38e49000-7f1d38e4a000 r--p 00000000 fd:01 1835888                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
+7f1d38e4a000-7f1d38e6d000 r-xp 00001000 fd:01 1835888                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
+7f1d38e6d000-7f1d38e75000 r--p 00024000 fd:01 1835888                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
+7f1d38e76000-7f1d38e77000 r--p 0002c000 fd:01 1835888                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
+7f1d38e77000-7f1d38e78000 rw-p 0002d000 fd:01 1835888                    /usr/lib/x86_64-linux-gnu/ld-2.31.so
+7f1d38e78000-7f1d38e79000 rw-p 00000000 00:00 0 
+7ffe02568000-7ffe0258a000 rw-p 00000000 00:00 0                          [stack]
+7ffe025de000-7ffe025e2000 r--p 00000000 00:00 0                          [vvar]
+7ffe025e2000-7ffe025e4000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+
+VM Arguments:
+jvm_args: -Dapplication.home=/home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk -Xms8m -XX:+UseSerialGC -Xms32M -Xmx512M -XX:TieredStopAtLevel=1 -Djdk.module.main=jdk.jlink 
+java_command: jdk.jlink/jdk.tools.jmod.Main create --module-version 11.0.19-internal --target-platform linux-amd64 --module-path /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/images/jmods --cmds /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/support/modules_cmds/java.scripting --class-path /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk/modules/java.scripting --legal-notices /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/support/modules_legal/common --exclude **{_the.*,_*.marker,*.diz,*.debuginfo,*.dSYM/**,*.dSYM} /home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/support/jmods/java.scripting.jmod
+java_class_path (initial): <not set>
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 12                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 33554432                                  {product} {command line}
+   size_t MaxHeapSize                              = 536870912                                 {product} {command line}
+   size_t MaxNewSize                               = 178913280                                 {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 196608                                    {product} {ergonomic}
+   size_t NewSize                                  = 11141120                                  {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 12163472                               {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 239494768                              {pd product} {ergonomic}
+   size_t OldSize                                  = 22413312                                  {product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 0                                      {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     intx TieredStopAtLevel                        = 1                                         {product} {command line}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseSerialGC                              = true                                      {product} {command line}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=/home/ugrads/i/ivzap/documents/JDK_Research/jdk11u/build/linux-x86_64-normal-server-release/jdk
+PATH=/home/ugrads/i/ivzap/documents/JDK_Research/apache-maven-3.9.1/bin:/home/ugrads/i/ivzap/.vscode-server/bin/e344f1f539a80912a0e9357cec841f36ce97a4e2/bin/remote-cli:/home/ugrads/i/ivzap/.local/bin:/home/ugrads/i/ivzap/.nvm/versions/node/v19.9.0/bin:/home/ugrads/i/ivzap/documents/JDK_Research/apache-maven-3.9.1/bin:/opt/coe/bin:/home/ugrads/i/ivzap/.local/bin:/opt/coe/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/ugrads/i/ivzap/.fzf/bin
+SHELL=/bin/bash
+LANG=en_US.UTF-8
+LC_ALL=C
+TERM=xterm-256color
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xe25f60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xe25f60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0xe25f60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0xc1ad70], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0xc1ad70], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0xe25f60], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR2: [libjvm.so+0xc1ac10], sa_mask[0]=00000000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=20.04
+DISTRIB_CODENAME=focal
+DISTRIB_DESCRIPTION="Ubuntu 20.04.5 LTS"
+uname:Linux 5.15.0-56-generic #62~20.04.1-Ubuntu SMP Tue Nov 22 21:24:20 UTC 2022 x86_64
+OS uptime: 13 days 5:15 hours
+libc:glibc 2.31 NPTL 2.31 
+rlimit (soft/hard): STACK 8192k/infinity , CORE 0k/infinity , NPROC 62225/62225 , NOFILE 1048576/1048576 , AS infinity/infinity , CPU infinity/infinity , DATA infinity/infinity , FSIZE infinity/infinity , MEMLOCK 65536k/65536k
+load average:20.95 18.78 9.28
+
+/proc/meminfo:
+MemTotal:       16065396 kB
+MemFree:         2759076 kB
+MemAvailable:    9128376 kB
+Buffers:          286748 kB
+Cached:          5891752 kB
+SwapCached:        47536 kB
+Active:          3635792 kB
+Inactive:        8390760 kB
+Active(anon):     736256 kB
+Inactive(anon):  5235500 kB
+Active(file):    2899536 kB
+Inactive(file):  3155260 kB
+Unevictable:       10112 kB
+Mlocked:              64 kB
+SwapTotal:       8040444 kB
+SwapFree:        6401840 kB
+Dirty:             66920 kB
+Writeback:             0 kB
+AnonPages:       5841392 kB
+Mapped:           221116 kB
+Shmem:            123392 kB
+KReclaimable:     657148 kB
+Slab:             895316 kB
+SReclaimable:     657148 kB
+SUnreclaim:       238168 kB
+KernelStack:       25164 kB
+PageTables:        58532 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    16073140 kB
+Committed_AS:   13627040 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       87748 kB
+VmallocChunk:          0 kB
+Percpu:            30240 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+FileHugePages:         0 kB
+FilePmdMapped:         0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:      951412 kB
+DirectMap2M:    13410304 kB
+DirectMap1G:     3145728 kB
+
+/sys/kernel/mm/transparent_hugepage/enabled:
+always [madvise] never
+/sys/kernel/mm/transparent_hugepage/defrag (defrag/compaction efforts parameter):
+always defer defer+madvise [madvise] never
+
+Process Memory:
+Virtual Size: 1926804K (peak: 1926804K)
+Resident Set Size: 30856K (peak: 30856K) (anon: 18032K, file: 12824K, shmem: 0K)
+Swapped out: 0K
+C-Heap outstanding allocations: 5901K, retained: 34K
+glibc malloc tunables: (default)
+
+/proc/sys/kernel/threads-max (system-wide limit on the number of threads):
+124451
+/proc/sys/vm/max_map_count (maximum number of memory map areas a process may have):
+65530
+/proc/sys/kernel/pid_max (system-wide limit on number of process identifiers):
+4194304
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-19
+cpu_memory_nodes: 0
+active_processor_count: 20
+cpu_quota: no quota
+cpu_period: 100000
+cpu_shares: no shares
+memory_limit_in_bytes: unlimited
+memory_and_swap_limit_in_bytes: unlimited
+memory_soft_limit_in_bytes: unlimited
+memory_usage_in_bytes: 10262152 k
+memory_max_usage_in_bytes: 12741516 k
+kernel_memory_usage_in_bytes: 335484 k
+kernel_memory_max_usage_in_bytes: unlimited
+kernel_memory_limit_in_bytes: 335516 k
+maximum number of tasks: unlimited
+current number of tasks: 385
+
+Steal ticks since vm start: 0
+Steal ticks percentage since vm start:  0.000
+
+CPU:total 20 (initial active 20) (10 cores per cpu, 2 threads per core) family 6 model 151 stepping 2 microcode 0x22, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, sha, fma
+CPU Model and flags from /proc/cpuinfo:
+model name	: 12th Gen Intel(R) Core(TM) i7-12700
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect avx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req umip pku ospke waitpkg gfni vaes vpclmulqdq tme rdpid movdiri movdir64b fsrm md_clear serialize pconfig arch_lbr flush_l1d arch_capabilities
+Online cpus:
+0-19
+Offline cpus:
+
+BIOS frequency limitation:
+<Not Available>
+Frequency switch latency (ns):
+0
+Available cpu frequencies:
+<Not Available>
+Current governor:
+powersave
+Core performance/turbo boost:
+<Not Available>
+
+Memory: 4k page, physical 16065396k(2754540k free), swap 8040444k(6401840k free)
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.19-internal+0-adhoc.ivzap.jdk11u) for linux-amd64 JRE (11.0.19-internal+0-adhoc.ivzap.jdk11u), built on Apr 14 2023 03:05:11 by "ivzap" with gcc 9.4.0
+
+END.

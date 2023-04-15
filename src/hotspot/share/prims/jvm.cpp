@@ -85,7 +85,7 @@
 #include "utilities/histogram.hpp"
 #include "utilities/macros.hpp"
 #include "utilities/utf8.hpp"
-#include <iostream>
+
 #if INCLUDE_CDS
 #include "classfile/systemDictionaryShared.hpp"
 #endif
@@ -462,9 +462,13 @@ JVM_ENTRY_NO_ENV(void, JVM_GC(void))
   }
 JVM_END
 
-JVM_ENTRY_NO_ENV(void, MARK(jobject obj))
-  JVMWrapper("FREE");
-  Universe::MARK(obj);
+JVM_ENTRY_NO_ENV(void, JVM_MARK(jobject handle))
+  JVMWrapper("JVM_MARK");
+  // check the case when handle is null: -> dont do anything.
+  Handle obj(THREAD, JNIHandles::resolve_non_null(handle));
+  if(handle!=NULL){
+    Universe::JVM_MARK(obj());
+  }
 JVM_END
 
 

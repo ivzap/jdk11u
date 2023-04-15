@@ -164,10 +164,8 @@ NarrowPtrStruct Universe::_narrow_klass = { NULL, 0, true };
 address Universe::_narrow_ptrs_base;
 uint64_t Universe::_narrow_klass_range = (uint64_t(max_juint)+1);
 
-void Universe::MARK(jobject obj){
-  oop* oopPtr = (oop*) obj;
-  oopDesc* descPtr = (oopDesc*)(*oopPtr); // cast the oop* to an oopDesc*
-  std::cout << "Object size: " << descPtr->size() << " bytes" << std::endl;
+void Universe::JVM_MARK(oop obj){
+  tty->print_jlong(obj->size());
 }
 
 void Universe::basic_type_classes_do(void f(Klass*)) {

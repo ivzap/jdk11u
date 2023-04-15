@@ -1774,27 +1774,10 @@ public final class System {
         Runtime.getRuntime().gc();
     }
 
-    /**
-     * Runs the garbage collector.
-     *
-     * Calling the {@code gc} method suggests that the Java Virtual
-     * Machine expend effort toward recycling unused objects in order to
-     * make the memory they currently occupy available for quick reuse.
-     * When control returns from the method call, the Java Virtual
-     * Machine has made a best effort to reclaim space from all discarded
-     * objects.
-     * <p>
-     * The call {@code System.gc()} is effectively equivalent to the
-     * call:
-     * <blockquote><pre>
-     * Runtime.getRuntime().gc()
-     * </pre></blockquote>
-     * @param      obj   passed object.
-     * @see     java.lang.Runtime#gc()
-     */
-    public static void mark(Object obj) {
-        Runtime.getRuntime().mark(obj);
-    }
+    
+    // public static void mark(Object obj) {
+    //     Runtime.getRuntime().mark(obj);
+    // }
 
     /**
      * Runs the finalization methods of any objects pending finalization.

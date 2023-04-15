@@ -279,7 +279,7 @@ class Universe: AllStatic {
   static Klass* singleArrayKlassObj()               { return _singleArrayKlassObj; }
   static Klass* doubleArrayKlassObj()               { return _doubleArrayKlassObj; }
   
-  static void MARK(jobject obj);
+  static void JVM_MARK(oop obj);
 
   static Klass* objectArrayKlassObj() {
     return _objectArrayKlassObj;

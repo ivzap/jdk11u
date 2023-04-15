@@ -63,6 +63,7 @@ class oopDesc {
     Klass*      _klass;
     narrowKlass _compressed_klass;
   } _metadata;
+  
   // add another field 
  public: 
   // inline void setRDD(int status){

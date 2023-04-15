@@ -38,7 +38,6 @@
 #include "jni.h"
 #include "jni_util.h"
 #include "jvm.h"
-#include <stdio.h>
 
 #include "java_lang_Runtime.h"
 
@@ -70,7 +69,8 @@ JNIEXPORT void JNICALL
 Java_java_lang_Runtime_mark(JNIEnv *env, jobject this, jobject obj)
 {
     // pass in object
-    MARK(obj);
+    JVM_MARK(obj);
+    // JVM_MARK CHANGE
     // cast obj to oopDasc ptr then print the size.
     // implement jvm.h and jvm.cpp for free. Then add a function that
     // Universe->print_size_of_object.
