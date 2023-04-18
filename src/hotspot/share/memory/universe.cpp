@@ -165,7 +165,7 @@ address Universe::_narrow_ptrs_base;
 uint64_t Universe::_narrow_klass_range = (uint64_t(max_juint)+1);
 
 void Universe::JVM_MARK(oop obj){
-  tty->print_jlong(obj->size());
+  tty->print_cr("Object Word Count: %d",obj->size());
 }
 
 void Universe::basic_type_classes_do(void f(Klass*)) {
