@@ -66,10 +66,15 @@ class oopDesc {
   
   // add another field 
  public: 
-  // inline void setRDD(int status){
-  //   std::cout << "RDD set to " << status << std::endl << std::flush;
-  //   RDD = status;
-  // }
+  inline bool is_RDD(){
+    if(RDD == 1){
+      return true;
+    }
+    return false;
+  }
+  inline void set_RDD(int status){
+    RDD = status;
+  }
   inline markOop  mark()          const;
   inline markOop  mark_raw()      const;
   inline markOop* mark_addr_raw() const;

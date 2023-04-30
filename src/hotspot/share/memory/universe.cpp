@@ -165,6 +165,8 @@ address Universe::_narrow_ptrs_base;
 uint64_t Universe::_narrow_klass_range = (uint64_t(max_juint)+1);
 
 void Universe::JVM_MARK(oop obj){
+  // set the oop mark attribute to whatever we want: ex mark=1
+  obj->set_RDD(1);
   tty->print_cr("Object Word Count: %d",obj->size());
 }
 

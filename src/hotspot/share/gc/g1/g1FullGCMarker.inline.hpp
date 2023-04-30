@@ -60,10 +60,15 @@ inline bool G1FullGCMarker::mark_object(oop obj) {
   if (G1StringDedup::is_enabled()) {
     G1StringDedup::enqueue_from_mark(obj, _worker_id);
   }
+  
+  if(obj->is_RDD()){
+    tty->print_cr("Address of RDD Marked Object: %p, RDD_BIT:%d\n", obj, obj->is_RDD());
+  }
   return true;
 }
 
 template <class T> inline void G1FullGCMarker::mark_and_push(T* p) {
+  //tty->print_cr("mark_and_push called!");
   T heap_oop = RawAccess<>::oop_load(p);
   if (!CompressedOops::is_null(heap_oop)) {
     oop obj = CompressedOops::decode_not_null(heap_oop);
